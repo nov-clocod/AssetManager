@@ -40,18 +40,23 @@ public class Vehicle extends Asset {
 
     @Override
     public double getValue() {
-        LocalDate currentDate = LocalDate.now();
-        int currentYear = currentDate.getYear();
+        int currentYear = LocalDate.now().getYear();
         int carAge = currentYear - this.year;
         double cost = getValue();
         double currentVehiclePrice = 0;
 
-        if (carAge >= 0 && carAge <= 3) {
-            currentVehiclePrice = cost * .97 * carAge;
-        } else if (carAge >= 4 && carAge <= 6) {
-            currentVehiclePrice = cost * .94 * carAge;
-        } else if (carAge >= 7 && carAge <= 10) {
-            currentVehiclePrice = cost * .92 * carAge;
+        if (carAge <= 3) {
+            for (int i = 0; i < carAge; i++) {
+                currentVehiclePrice = cost * .97;
+            }
+        } else if (carAge <= 6) {
+            for (int i = 0; i < carAge; i++) {
+                currentVehiclePrice = cost * .94;
+            }
+        } else if (carAge <= 10) {
+            for (int i = 0; i < carAge; i++) {
+                currentVehiclePrice = cost * .92;
+            }
         } else {
             currentVehiclePrice = 1000;
         }
